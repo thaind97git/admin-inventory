@@ -2,30 +2,30 @@ import { Fragment } from "react";
 
 const arraySize = ["middle", "small", "big"]
 
-const ButtonLayout = ({ 
-    text, 
-    type = 'default', 
-    onClick, 
-    onChange, 
-    value, 
-    className = "", 
-    size = "middle", 
-    typeButton,
-    isDisabled
+const ButtonLayout = ({
+  text,
+  type = 'default',
+  onClick,
+  onChange,
+  value,
+  className = "",
+  size = "middle",
+  typeButton,
+  isDisabled
 }) => {
-    const sizeClass = arraySize.find(e => e == size) ? arraySize.find(e => e == size) : ""
-    return (
-        <Fragment>
-            <button 
-                className={"btn " + type + " " + className + " " + sizeClass} 
-                onClick={onClick} 
-                onChange={onChange} 
-                value={value}
-                type={typeButton}
-                disabled={isDisabled}>
-                {text}
-            </button>
-            <style jsx>{`
+  const sizeClass = arraySize.find(e => e == size) ? arraySize.find(e => e == size) : ""
+  return (
+    <Fragment>
+      <button
+        className={"btn " + type + " " + className + " " + sizeClass}
+        onClick={onClick}
+        onChange={onChange}
+        value={value}
+        type={typeButton}
+        disabled={isDisabled}>
+        {text}
+      </button>
+      <style jsx>{`
                 button {
                     border: none;
                     outline: none;
@@ -82,8 +82,8 @@ const ButtonLayout = ({
                     opacity: 0.9
                 }
             `}</style>
-        </Fragment>
-    )
+    </Fragment>
+  )
 }
 
 export default ButtonLayout;

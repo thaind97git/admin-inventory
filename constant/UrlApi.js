@@ -1,14 +1,14 @@
 const HTTP = "http://";
 // const HTTP = "";
-const PORT = ":3000";
+const PORT = "";
 // const SERVER_IP = "192.168.2.105:8000";
 // 172.20.10.11
 // localhost
 // myip
 // const SERVER_IP = "192.168.1.34"; //mode
-const SERVER_IP = "172.20.10.2"; //iphone
-// const SERVER_IP = "localhost";
-const SERVER_PATH = HTTP + SERVER_IP + PORT + '/api/v1';
+// const SERVER_IP = "172.20.10.2"; //iphone
+const SERVER_IP = "inventorymanagement-api.azurewebsites.net";
+export const SERVER_PATH = HTTP + SERVER_IP + PORT;
 
 const SERVER_PORT = PORT;
 

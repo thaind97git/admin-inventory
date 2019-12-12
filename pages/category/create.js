@@ -1,13 +1,14 @@
 import React from 'react';
 import AdminPageLayout from '../../layouts/AdminPageLayout';
 import AuthenHOC from '../../HOC/authenHOC';
-import DashboardComponent from '../../components/DashboardComponent';
-const DashboardPage = (rootProps) => {
+import CreateMajorComponent from '../../components/category/CreateMajorComponent';
+
+const CreateMajorLayout = (rootProps) => {
     return (
         <AdminPageLayout>
-            <DashboardComponent />
+            <CreateMajorComponent />
         </AdminPageLayout>
     )
 }
 
-export default AuthenHOC(DashboardPage)
+export default AuthenHOC(CreateMajorLayout)

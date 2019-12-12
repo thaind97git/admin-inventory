@@ -15,7 +15,7 @@ const SiderLayout = ({ isOpenMenu }) => {
     return (
         <Fragment>
             <Sider width={WIDTH_MENU} style={styleSider}>
-                <img src="/static/image/lo_fug.jpg" className="logo" />
+                <img src="/static/image/images.png" className="logo" />
                 <NavComponent />
             </Sider>
             <style jsx>{`

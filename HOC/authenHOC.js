@@ -16,9 +16,9 @@ function Authen(AuthComponent) {
     class AuthenHOC extends Component {
         static getInitialProps = async ctx => {
             return AuthComponent.getInitialProps
-              ? AuthComponent.getInitialProps(ctx)
-              : {};
-          };
+                ? AuthComponent.getInitialProps(ctx)
+                : {};
+        };
         componentDidMount() {
             const { checkHOC } = this.props.userAction;
             checkHOC()

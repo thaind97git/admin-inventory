@@ -5,19 +5,19 @@ import ModalAsycnLayout from '../layouts/ModalAsycnLayout';
 import ConfirmLayout from '../layouts/ConfirmLayout';
 import axios from 'axios';
 import { URL_USER } from '../constant/UrlApi';
-import { 
-    TOAST_SUCCESS, 
-    TOAST_ERROR, 
-    TOAST_WARN, 
-    TOAST_DEFAULT, 
-    DIALOG_SUCCESS, 
-    DIALOG_ERROR, 
-    DIALOG_INFO 
+import {
+    TOAST_SUCCESS,
+    TOAST_ERROR,
+    TOAST_WARN,
+    TOAST_DEFAULT,
+    DIALOG_SUCCESS,
+    DIALOG_ERROR,
+    DIALOG_INFO
 } from '../utils/actions';
 
 const connectToRedux = connect(null, dispatch => ({
     displayNotify: (type, message) => {
-        dispatch({ type: type, payload: { message: message }})
+        dispatch({ type: type, payload: { message: message } })
     },
     displayDialog: (type, title, content) => {
         dispatch({ type: type, payload: { title: title, content: content } })
@@ -63,7 +63,7 @@ const DashboardComponent = ({ displayNotify, displayDialog }) => {
                     type="default" 
                     onClick={() => displayNotify(TOAST_DEFAULT, 'Toast notifycation default')} /> */}
 
-                    <h2>FPT Admin new K</h2>
+                <h2>Inventory Management</h2>
 
                 {/* <ModelAsycnLayout
                     titleModel={<h3>Here is model example about asycn</h3>}

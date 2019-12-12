@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import MenuComponent from '../components/MenuComponent';
-import * as Utils from '../utils/utils';
+import Router from 'next/router';
 
 class NavComponent extends Component {
-    render() {
-        const path = Utils.currentUrl();
-        return (
-            <MenuComponent 
-                path={path}   
-            />
-        )
-    }
+  render() {
+    const path = Router.router && Router.router.route;
+    return (
+      <MenuComponent
+        path={path}
+      />
+    )
+  }
 }
 
 export default NavComponent;

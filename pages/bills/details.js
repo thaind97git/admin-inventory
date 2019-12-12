@@ -1,13 +1,14 @@
 import React from 'react';
 import AdminPageLayout from '../../layouts/AdminPageLayout';
 import AuthenHOC from '../../HOC/authenHOC';
-import DashboardComponent from '../../components/DashboardComponent';
-const DashboardPage = (rootProps) => {
+import BillDetailsComponent from '../../components/BillDetailsComponent';
+
+const CreateSchoolLayout = (rootProps) => {
     return (
         <AdminPageLayout>
-            <DashboardComponent />
+            <BillDetailsComponent />
         </AdminPageLayout>
     )
 }
 
-export default AuthenHOC(DashboardPage)
+export default AuthenHOC(CreateSchoolLayout)

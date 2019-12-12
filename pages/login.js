@@ -19,7 +19,7 @@ class LoginPage extends Component {
     }
     render() {
         return (
-            <LoginComponent/>
+            <LoginComponent />
         )
     }
 

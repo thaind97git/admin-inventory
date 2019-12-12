@@ -4,7 +4,7 @@ import menuReducer from './MenuState';
 import dialogReducer from './DialogState';
 import UtilsReducer from './UtilsState';
 import AdminReducer from './AdminState';
-import StudentReducer from './StudentState';
+import ProductReducer from './ProductState';
 import { combineReducers } from 'redux';
 import { reducers as apiReducers } from 'redux-api-call';
 
@@ -16,5 +16,5 @@ export default combineReducers({
     ...dialogReducer,
     ...UtilsReducer,
     ...AdminReducer,
-    ...StudentReducer
+    ...ProductReducer
 })

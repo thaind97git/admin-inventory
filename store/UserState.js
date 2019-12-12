@@ -1,29 +1,15 @@
-import axios from 'axios';
 import Router from 'next/router';
-import { CHECK_LOGIN } from '../constant/UrlApi';
-import * as Utils from '../utils/utils';
 import { LOGIN_SUCCESS, LOGIN_FAIL } from '../utils/actions';
-
-const optionCheckLogin = {
-    method: "GET",
-    data: {},
-    withCredentials: true
-}
+import { getToken } from '../config/storageConfig';
+import { currentUrl, redirectURL } from '../utils'
 
 export const checkHOC = () => dispatch => {
-    axios(CHECK_LOGIN, optionCheckLogin)
-        .then(({ data }) => {
-            if (!Utils.isEmptyObject(data.data)) {
-                dispatch(login_success())
-                Utils.currentUrl() === '/login' && Utils.redirectURL('/dashboard');
-            } else {
-                dispatch(login_fail())
-            }
-            
-        })
-        .catch(err => {
-            dispatch(login_fail())
-        })
+    if (getToken()) {
+        dispatch(login_success())
+        currentUrl() === '/login' && redirectURL('/dashboard');
+    } else {
+        dispatch(login_fail())
+    }
 }
 export const login_success = () => ({
     type: LOGIN_SUCCESS,
@@ -48,10 +34,6 @@ export default {
             Router.push('/login')
             return false;
         }
-        // if (type === LOGOUT) {
-        //     axios.get(URL_USER.LOGOUT)
-        //     return false;
-        // }
         return state;
     }
 }

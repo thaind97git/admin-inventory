@@ -1,65 +1,14 @@
-
-const key = 'j_token';
+import { isServer } from '../utils'
+const key = '__token';
 const __username = 'j_username'
-/**
- * Get value with `key` from Web Storage
- * @name getItem
- * @param {string} key
- * @returns {Object} Object value get from `key` 
- */
-export const getItem = function getItem(key) {
-    let result = localStorage.getItem(key)
-    return JSON.parse(result);
-}
+export const setToken = token => localStorage.setItem(key, token);
 
-/**
- * Set new value with `key` from Web Storage
- * @name setItem
- * @param {string} key
- * @param {any} value
- */
-export const setItem = function setItem(key, value) {
-    let valueSet = JSON.stringify(value);
-    return localStorage.setItem(key, valueSet);
-}
+export const getToken = () => localStorage.getItem(key);
 
-/**
- * Remove [`key` and `this.value`] from Web Storage
- * @name removeItem
- * @param {string} key
- */
-export const removeItem = (key) => {
-    return localStorage.removeItem(key);
-}
+export const removeToken = () => localStorage.removeItem(key);
 
-/**
- * RemoveAll [`key` and `this.value`] from Web Storage
- * @name removeAll
- * @param {string} key
- */
-export const removeAll = function removeAll() {
-    return localStorage.removeAll();
-}
+export const setUsername = username => localStorage.setItem(__username, username)
 
-export const setToken = (token) => {
-    return localStorage.setItem(key, token);
-}
+export const removeUsername = () => localStorage.removeItem(__username)
 
-export const getToken = () => {
-    return localStorage.getItem(key);
-}
-export const removeToken = () => {
-    return localStorage.removeItem(key);
-}
-
-export const setUsername = (username) => {
-    return localStorage.setItem(__username, username)
-}
-
-export const removeUsername = () => {
-    return localStorage.removeItem(__username)
-}
-
-export const getUsername = () => {
-    return localStorage.getItem(__username)
-}
+export const getUsername = () => localStorage.getItem(__username)

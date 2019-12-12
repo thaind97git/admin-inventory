@@ -1,4 +1,15 @@
 import moment from 'moment';
+
+const DATE_FORMAT = "DD/MM/YYYY";
+const TIME_FORMAT = "hh:mm:ss A";
+const DATE_TIME_FORMAT = `${DATE_FORMAT} ${TIME_FORMAT}`;
+
+export const formatTime = time => time ? moment(time).format(TIME_FORMAT) : null;
+
+export const formatDate = time => time ? moment(time).format(DATE_FORMAT) : null;
+
+export const formatDateTime = time => time ? moment(time).format(DATE_TIME_FORMAT) : null;
+
 export const formatDateServer = (date) => {
     return date ? moment(date).format('DD/MM/YYYY') : '';
 }

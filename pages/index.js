@@ -7,7 +7,7 @@ class Home extends React.Component {
     Router.push('/dashboard')
   }
   render() {
-    return(
+    return (
       <div></div>
     )
   }
