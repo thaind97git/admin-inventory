@@ -122,22 +122,10 @@ export const menus = [
   },
   {
     subKey: 'sub8',
-    subIcon: 'calculator',
+    subIcon: 'unordered-list',
     subText: 'Unit',
-    subLink: undefined,
+    subLink: "/unit",
     subItem: [
-      {
-        itemKey: 'sub8.1',
-        itemLink: '/units',
-        itemIcon: 'unordered-list',
-        itemText: 'Manage Unit'
-      },
-      {
-        itemKey: 'sub8.2',
-        itemLink: '/unit/create',
-        itemIcon: 'plus-square',
-        itemText: 'Create new unit'
-      }
     ]
   },
 ]

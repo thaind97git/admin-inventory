@@ -1,15 +1,17 @@
 import React, { useEffect, useState, Fragment } from 'react'
 import { connect } from 'react-redux';
 import { pick } from 'lodash/fp';
-import { Icon } from 'antd';
-import { doGet } from '../config';
-import { mapIndex } from '../utils';
+import { Icon, Button, Input, Modal } from 'antd';
+import { doGet, doPost } from '../../config';
+import { mapIndex } from '../../utils';
 import Link from 'next/link';
 
-import HeaderContent from './HeaderContent';
-import Tablecomponent from './TableComponent';
-import ButtonLayout from '../layouts/ButtonLayout';
-import RenderColumnComponent from './RenderComlunComponent';
+import HeaderContent from '../HeaderContent';
+import Tablecomponent from '../TableComponent';
+import ButtonLayout from '../../layouts/ButtonLayout';
+import RenderColumnComponent from '../RenderComlunComponent';
+import ConfirmLayout from "../../layouts/ConfirmLayout";
+import { TOAST_ERROR, TOAST_SUCCESS } from '../../utils/actions';
 
 const connectToRedux = connect(
   pick(['']),
@@ -23,10 +25,39 @@ const connectToRedux = connect(
   })
 )
 
-const UnitsComponent = ({ displayDialog }) => {
+const createUnit = async ({
+  displayNotify,
+  isReFetch,
+  setIsReFetch,
+  unitName
+}) => {
+  if (unitName === "") {
+    displayNotify(TOAST_ERROR, 'Create new unit fail !');
+    return;
+  }
+  try {
+    await doPost({
+      path: "/api/Units",
+      body: {
+        "UnitName": unitName
+      }
+    })
+    displayNotify(TOAST_SUCCESS, "Create new unit success !");
+    setIsReFetch(!isReFetch)
+  } catch (error) {
+    console.log(error)
+    displayNotify(
+      TOAST_ERROR, "Create new unit fail !"
+    );
+  }
+}
+
+const UnitsComponent = ({ displayDialog, displayNotify }) => {
   const [dataSrc, setDataSrc] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isReFetch, setIsReFetch] = useState(false);
+  const [unitName, setUnitName] = useState("")
+  const [modalCreate, setModalCreate] = useState(false)
   const columns = [
     {
       title: 'No.',
@@ -60,7 +91,6 @@ const UnitsComponent = ({ displayDialog }) => {
     },
   ];
 
-
   useEffect(() => {
     let didCancel = false;
     setIsLoading(true);
@@ -93,6 +123,20 @@ const UnitsComponent = ({ displayDialog }) => {
           data={mapIndex(dataSrc)}
           rowKey={record => record.UnitId} />
       </div>
+      <Modal
+        title="Create new Unit"
+        visible={modalCreate}
+        onOk={() => createUnit({ displayNotify, isReFetch, setIsReFetch, unitName })}
+        onCancel={() => setModalCreate(false)}
+        okText="Create"
+        cancelText="Cancel"
+      >
+        <Input value={unitName} onChange={e => setUnitName(e.target.value)} placeholder="input unit name" />
+      </Modal>
+      <Button onClick={() => { setModalCreate(true) }} type="primary" htmlType="submit" >
+        Create new unit
+      </Button>
+      <br />
     </Fragment>
   )
 }
